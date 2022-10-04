@@ -1,0 +1,30 @@
+export const hiddenObjects = [
+  { item: 'dart', found: false },
+  { item: 'oven mitt', found: false },
+  { item: 'clock', found: false },
+  { item: 'cheese', found: false },
+  { item: 'apple', found: false },
+];
+
+export const hiddenObjects2 = [
+  { item: 'clock', coordX: 53.62, coordY: 24.72, found: false },
+  { item: 'dart board', coordX: 74.5, coordY: 33.58, found: false },
+  { item: 'spoon', coordX: 73.25, coordY: 68.7, found: false },
+  { item: 'matches', coordX: 38.87, coordY: 94.85, found: false },
+  { item: 'scissors', coordX: 36.56, coordY: 41.9, found: false },
+  { item: 'ladle', coordX: 60.62, coordY: 36.87, found: false },
+  { item: 'mushrooms', coordX: 57.18, coordY: 42.12, found: false },
+  { item: 'rat', coordX: 51.68, coordY: 71.66, found: false },
+  { item: 'knife', coordX: 85.62, coordY: 68.38, found: false },
+  { item: 'vinyl disc', coordX: 80.37, coordY: 62.58, found: false },
+  { item: 'tape measure', coordX: 83.68, coordY: 61.7, found: false },
+  { item: 'blimp', coordX: 21.56, coordY: 18.49, found: false },
+  { item: 'cobb webs', coordX: 40.93, coordY: 22.86, found: false },
+  { item: 'belt', coordX: 41, coordY: 37.19, found: false },
+  { item: 'envelope', coordX: 29.06, coordY: 41.24, found: false },
+  { item: 'necktie', coordX: 43.87, coordY: 41.35, found: false },
+  { item: 'Fez', coordX: 24.37, coordY: 60.5, found: false },
+  { item: 'claw marks', coordX: 71.5, coordY: 61.59, found: false },
+  { item: 'thermometer', coordX: 34, coordY: 41.46, found: false },
+  { item: 'keys', coordX: 71.18, coordY: 39.05, found: false },
+];

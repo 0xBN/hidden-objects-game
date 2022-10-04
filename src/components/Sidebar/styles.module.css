@@ -1,0 +1,41 @@
+.container {
+  background-color: black;
+  padding: 1rem;
+  height: 100%;
+  width: 160px;
+  min-width: 10vw;
+  max-width: 10vw;
+  position: fixed;
+  z-index: 1;
+  left:0;
+  text-align: center;
+
+}
+
+.objectsList,
+.foundList {
+  display: flex;
+  gap: 3px;
+  flex-direction: column;
+
+}
+
+.objectsList>button,
+.foundList>button {
+  background-color: #333;
+  color: white;
+  border-radius: 2px;
+  border: none;
+  padding: 3px 0px;
+}
+
+.objectsList>button {
+  cursor: pointer;
+}
+
+
+.objectsList button:hover {
+  background-color: white;
+  color: black;
+
+}
