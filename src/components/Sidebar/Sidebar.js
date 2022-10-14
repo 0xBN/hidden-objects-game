@@ -12,9 +12,8 @@ export const Sidebar = ({
   setFound,
   unfound,
   setUnfound,
-  currentItem,
   setCurrentItem,
-  gameTimer,
+  display,
 }) => {
   const itemCollectionRef = collection(db, 'items');
 
@@ -49,7 +48,7 @@ export const Sidebar = ({
         ? setFound((prevState) => ({ ...prevState, [itemId]: itemObject }))
         : setUnfound((prevState) => ({ ...prevState, [itemId]: itemObject }));
     }
-  }, [items]);
+  }, [items, setFound, setUnfound]);
 
   const handleDragStart = (e) => setCurrentItem([e.target.name, e.target.id]);
 
@@ -77,14 +76,14 @@ export const Sidebar = ({
     <div className={styles.container}>
       <div className={styles.unfound}>
         <h3>Unfound: </h3>
-        {gameTimer[0] && (
+        {display === 'in-game' && (
           <div className={styles.objectsList}>{show(unfound, true)}</div>
         )}
       </div>
 
       <div className={styles.found}>
-        {gameTimer[0] && <h3>Found: </h3>}
-        {gameTimer[0] && (
+        {display === 'in-game' && <h3>Found: </h3>}
+        {display === 'in-game' && (
           <div className={styles.foundList}>{show(found, false)}</div>
         )}
       </div>

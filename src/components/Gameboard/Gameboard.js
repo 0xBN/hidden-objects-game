@@ -5,13 +5,10 @@ import gameImage from '../../shared/hiddenObjects.jpg';
 export const Gameboard = ({
   currentItem,
   items,
-  found,
   unfound,
   setFound,
   setUnfound,
-  gameTimer,
   setGameTimer,
-  display,
   setDisplay,
 }) => {
   const getCoordinate = (e) => {
@@ -27,9 +24,7 @@ export const Gameboard = ({
     e.preventDefault();
   };
 
-  const handleDrop = (e) => {
-    checkDropped(currentItem, getCoordinate(e));
-  };
+  const handleDrop = (e) => checkDropped(currentItem, getCoordinate(e));
 
   const checkDropped = (currentItem, coordinate) => {
     let xTolerance = 5;
@@ -39,20 +34,15 @@ export const Gameboard = ({
     // Compare to database
     for (let _item of items) {
       if (_item[draggedItemID]) {
-        let { coordX, coordY, item, found } = _item[draggedItemID];
+        let { coordX, coordY, item } = _item[draggedItemID];
 
-        // Compare X coordinates
+        // Compare X Y coordinates
         let xDiff = Math.abs(coordX - droppedCoordinate[0]);
-
-        // Compare Y coordinates
         let yDiff = Math.abs(coordY - droppedCoordinate[1]);
-
-        // console.log('xy Diff', xDiff, yDiff);
 
         // If X < some threshold && Y < some threshold
         // then set item as Found
         if (xDiff < xTolerance && yDiff < yTolerance) {
-          // set Found
           updateFound(draggedItemID, {
             coordY: coordY,
             coordX: coordX,
@@ -60,11 +50,8 @@ export const Gameboard = ({
             item: item,
           });
 
-          // set Unfound
           updateUnfound(draggedItemID);
           checkWin();
-        } else {
-          console.log('not found');
         }
       }
     }
@@ -83,16 +70,12 @@ export const Gameboard = ({
   const checkWin = () => {
     let unfoundCount = Object.keys(unfound).length;
     let currentTime = Math.floor(Date.now() / 1000);
-    console.log('unfoundCount', unfoundCount);
+
     if (unfoundCount <= 1) {
       setGameTimer((prevState) => [...prevState, currentTime]);
       setDisplay('win');
     }
   };
-
-  React.useEffect(() => {
-    let sinceLastClick = gameTimer[gameTimer.length - 1] - gameTimer[0];
-  }, [gameTimer]);
 
   return (
     <div className={styles.gameBoard}>
@@ -106,36 +89,3 @@ export const Gameboard = ({
     </div>
   );
 };
-//
-//
-//
-//
-// Archive
-
-// console.log(coordX, coordY, item, found);
-
-// console.log(
-//   `Checking ${draggedItem} (${draggedItemID}) at location ${droppedCoordinate}`
-// );
-
-// tolerance:
-// Y Vertical: 28 to 39
-// X Horizontal: 71.37 to 77.56
-// 5% in any direction from the center point
-
-// Center: 74.43, 33.58
-// Left: 71.37, 33.58
-// Right: 77.56, 33.36
-// Top: 74.5, 28.11
-// Bottom: 74.62, 39.38
-
-// tolerance:
-// Vertical: 28 to 39
-// Horiztonal: 71.37 to 77.56
-// 5% in any direction from the center point
-
-//
-//
-// navigator.clipboard.writeText(
-//   `: { item: 'clock', coordX: ${coordX}, coordY: ${coordY}, found: false },`
-// );

@@ -25,10 +25,9 @@ export const Menu = ({
       const q = query(leaderboardCollectionRef, orderBy('time'));
       const data = await getDocs(q);
       setLeaderboard(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-      console.log(leaderboard);
     };
     getLeaderboard();
-  }, [display]);
+  }, [display, leaderboardCollectionRef, setLeaderboard]);
 
   const secondsToHms = (d) => {
     d = Number(d);
@@ -43,15 +42,13 @@ export const Menu = ({
       ('0' + s).slice(-2)
     );
   };
+
   const time = (gameTimer) => gameTimer[1] - gameTimer[0];
 
   const handleSubmitScore = (e) => {
     const player_div = document.getElementById('playername');
     setDisplay('leaderboard');
 
-    // write name and time (in seconds to Firestore)
-    console.log(player_div.value);
-    console.log(time(gameTimer));
     addDoc(leaderboardCollectionRef, {
       name: player_div.value,
       time: time(gameTimer),
@@ -63,7 +60,6 @@ export const Menu = ({
   const show = (leaderboard) => {
     let leaderboardDisplay = [];
     leaderboard.forEach((player) => {
-      console.log(player.name);
       leaderboardDisplay.push(
         <div className={styles.leaderboardRow} key={nanoid()}>
           <div>Player: {player.name}</div>
@@ -73,14 +69,16 @@ export const Menu = ({
     });
     return leaderboardDisplay;
   };
+
   return (
     <div className={styles.container}>
-      {!gameTimer[0] && (
+      {display === 'start' && (
         <button
           className={styles.startButton}
           onClick={() => {
             let currentTime = Math.floor(Date.now() / 1000);
             setGameTimer((prevState) => [...prevState, currentTime]);
+            setDisplay('in-game');
           }}
         >
           <div className={styles.title}>Start Game</div>
