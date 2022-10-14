@@ -81,7 +81,7 @@ export const Menu = ({
             setDisplay('in-game');
           }}
         >
-          <div className={styles.title}>Start Game</div>
+          <div className={styles.title}>test Start Game</div>
           <div>Drag & Drop items from the Sidebar</div>
         </button>
       )}
