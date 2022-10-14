@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/hidden-objects-game/static/css/main.384d08a6.css",
+    "main.js": "/hidden-objects-game/static/js/main.7e1b440a.js",
+    "static/media/hiddenObjects.jpg": "/hidden-objects-game/static/media/hiddenObjects.574c8e4b7c6b9e180c97.jpg",
+    "index.html": "/hidden-objects-game/index.html",
+    "main.384d08a6.css.map": "/hidden-objects-game/static/css/main.384d08a6.css.map",
+    "main.7e1b440a.js.map": "/hidden-objects-game/static/js/main.7e1b440a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.384d08a6.css",
+    "static/js/main.7e1b440a.js"
+  ]
+}
